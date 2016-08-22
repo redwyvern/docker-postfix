@@ -1,3 +1,8 @@
+![](https://img.shields.io/docker/stars/redwyvern/postfix.svg)
+![](https://img.shields.io/docker/pulls/redwyvern/postfix.svg)
+![](https://img.shields.io/docker/automated/redwyvern/postfix.svg)
+[![](https://images.microbadger.com/badges/image/redwyvern/postfix.svg)](https://microbadger.com/images/redwyvern/postfix "Get your own image badge on microbadger.com")
+
 An image running a the postfix mailer daemon that will forward and authenticate with another mail relay.
 
 This image is useful if you have to relay to another legitimate SMTP server in order to send outgoing mail and that SMTP server uses TLS and authentication.
