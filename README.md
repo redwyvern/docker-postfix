@@ -7,6 +7,6 @@ An image running a the postfix mailer daemon that will forward and authenticate 
 
 This image is useful if you have to relay to another legitimate SMTP server in order to send outgoing mail and that SMTP server uses TLS and authentication.
 
-Copy the run.sh from the image source repository, configure it and then and use this to launch the container.
+Copy the postfix.yml from the image source repository, configure it and then and use this to launch the container via docker compose.
 
-You may also wish to add something like "-p 587:25" to the run.sh script so that it will publish its SMTP port as port 587 in the host. This port can then be used by the LAN or the host itself as a simple unauthenticated relay.
+You may also wish to uncomment the ports section including the "- 587:25" in the postfix.yml file so that it will publish its SMTP port as port 587 in the host. This port can then be used by the LAN or the host itself as a simple unauthenticated relay.

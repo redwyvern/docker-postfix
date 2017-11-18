@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  postfix:
+    image: docker.artifactory.weedon.org.au/redwyvern/postfix
+    container_name: postfix
+    hostname: postfix
+    # uncomment this if you wish allow the container to accept mail from outside the docker execution environment
+    #ports:
+    #  - '587:25'
+    dns: 192.168.1.50
+    networks:
+      dev_nw:
+        aliases:
+          - smtp-server
+    environment:
+      - MAILNAME=temporary.example.com
+      - MY_NETWORKS=172.0.0.0/8 127.0.0.0/8
+      - ROOT_ALIAS=somebody@example.com
+      - MY_DESTINATION=localhost.localdomain, localhost
+      - MY_DOMAIN=example.com
+      - RELAY_HOST=myrelay.example.com:587
+      - SMTP_USER=somebody
+      - SMTP_PASSWORD=example_password
+    volumes:
+      - /opt/docker-containers/postfix/data:/var/spool/postfix
+      - /opt/docker-containers/postfix/log:/var/log/postfix
+    restart: always
+
+networks:
+  dev_nw:
+
